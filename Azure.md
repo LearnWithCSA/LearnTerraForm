@@ -1,10 +1,9 @@
 # Terraform on Azure samples
 
 # Authentication 
-Terraform has multiple ways to authenticate with azure. In most cases a service princple will be required in azure. Lets create it using **PowerShell**.
+Terraform has multiple ways to authenticate with azure. In most cases a service principle will be required in azure to use with Terraform. Lets create it using **PowerShell**.
 
 Please save the secret returned by the below secret as it is available to get only when you craete it. 
-
  
 ```PowerShell
 $TenantID = 'your tennantid here'
@@ -12,9 +11,10 @@ $SubscriptionID = 'your subscriptionid here'
 Connect-AzAccount -Tenant $TenantID
 Set-AzContext -Subscription $SubscriptionID
 $sp = New-AzADServicePrincipal -DisplayName TerraformSPN
+$sp.Secret | ConvertFrom-SecureString
 ```
 
-We can use these variables as harcoded in the config but it is better to use them as environment varibles. Lets run the following to 
+We can use these variables as harcoded in the config but it is better to use them as environment variables. Lets run the following to create permenant system environment variables so that all users can access.
 
 ```PowerShell
 $Secret = $sp.Secret | ConvertFrom-SecureString
