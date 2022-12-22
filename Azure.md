@@ -25,3 +25,4 @@ $Scope = [System.EnvironmentVariableTarget]::Machine
  [System.Environment]::SetEnvironmentVariable('ARM_TENANT_ID',$TenantID ,$Scope)
 ```
 
+# sth sth
