@@ -1,7 +1,13 @@
 # Terraform on Azure samples
 
-# Authentication 
-Terraform has multiple ways to authenticate with azure. In most cases a service principle will be required in azure to use with Terraform. Lets create it using **PowerShell**.
+ Terraform has multiple ways to authenticate with azure. Top 3 scenarios is as follows.
+
+ - Authentication using Service Principal
+ - Authentication using Az Client
+ - Authentication using Managed Idendity
+
+## Authentication using Service Principal
+ In most cases a service principle will be required in azure to use with Terraform. Lets create it using **PowerShell**.
 
 Please save the secret returned by the below secret as it is available to get only when you craete it. 
  
@@ -25,4 +31,5 @@ $Scope = [System.EnvironmentVariableTarget]::Machine
  [System.Environment]::SetEnvironmentVariable('ARM_TENANT_ID',$TenantID ,$Scope)
 ```
 
-# sth sth
+## Authentication using Az Client
+
